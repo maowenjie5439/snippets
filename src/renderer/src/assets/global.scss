@@ -1,0 +1,11 @@
+// body{
+//     // @apply bg-blue-300;
+// }
+
+.drag{
+    -webkit-app-region: drag;
+}
+
+.no-drag {
+    -webkit-app-region: no-drag;
+}

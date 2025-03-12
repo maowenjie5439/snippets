@@ -1,0 +1,11 @@
+.main{
+    @apply bg-slate-50 px-3 pb-2 text-xs rounded-b-lg -mt-[7px];
+
+    .item{
+        @apply text-slate-700 truncate mb-2 text-lg rounded-md;
+
+        &.active{
+            @apply bg-orange-300;
+        }
+    }
+}
