@@ -31,10 +31,7 @@ export const useCodeSelect = () => {
             break
           case 'Enter':
             console.log('Enter')
-            navigator.clipboard.writeText(data.find((item) => item.id === id)!.content)
-            console.log(`复制成功: ${data.find((item) => item.id === id)!.content}`)
-
-            window.api.hideWindow({ message: 'maowenjie' })
+            selectItem(id)
             break
         }
       }
@@ -56,7 +53,13 @@ export const useCodeSelect = () => {
     setId(0)
   }, [data])
 
+  const selectItem = (id: number) => {
+    navigator.clipboard.writeText(data.find((item) => item.id === id)!.content)
+    console.log(`复制成功: ${data.find((item) => item.id === id)!.content}`)
+
+    window.api.hideWindow({ message: 'maowenjie' })
+  }
   console.log('currentId: ', id)
 
-  return { data, id }
+  return { data, id, selectItem }
 }

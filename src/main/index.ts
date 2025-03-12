@@ -2,7 +2,7 @@ import { app, shell, BrowserWindow, ipcMain, screen } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
-import './ipc'
+import { ipcRegister } from './ipc'
 
 function createWindow(): void {
   // Create the browser window.
@@ -57,6 +57,9 @@ function createWindow(): void {
     console.log(`新尺寸: ${width} x ${height}`)
   })
 
+  ipcRegister(mainWindow)
+
+
   // HMR for renderer base on electron-vite cli.
   // Load the remote URL for development or the local html file for production.
   if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
@@ -93,7 +96,6 @@ app.whenReady().then(() => {
   // })
 
   createWindow()
-
   app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
